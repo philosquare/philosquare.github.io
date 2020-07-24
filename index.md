@@ -8,21 +8,21 @@
 
 ```go
 type Namer interface {
-	GetName() string
-	SetName(name string)
+  GetName() string
+  SetName(name string)
 }
 
 type User struct {
-	Name string
-	Age int
+  Name string
+  Age int
 }
 
 func (u User) GetName() string {  
-	return u.Name
+  return u.Name
 }
 
 func (u *User) SetName(name string) {
-	u.Name = name
+  u.Name = name
 }
 
 var user User{} // user是否实现了Namer接口？
@@ -42,11 +42,11 @@ var user User{} // user是否实现了Namer接口？
 
 ```go
 func main() {
-	user.SetName("Jack") // 编译器帮你把user的指针传给SetName方法，改变了user
-	user.GetName() // Jack
+  user.SetName("Jack") // 编译器帮你把user的指针传给SetName方法，改变了user
+  user.GetName() // Jack
   
   // 等价于下面两行：
-	(*User).SetName(&user, "Jack")
+  (*User).SetName(&user, "Jack")
   User.GetName(user)
 }
 ```
@@ -55,7 +55,7 @@ func main() {
 
 ```go
 func main() {
-	User{}.SetName("Tom") // ERROR
+  User{}.SetName("Tom") // ERROR
 }
 ```
 
@@ -138,8 +138,8 @@ func main() {
 
 ```go
 type Student struct {
-	User
-	Class string
+  User
+  Class string
 }
 ```
 
@@ -157,8 +157,8 @@ Student中包含了User类型的匿名字段，这是Go语言里的组合。
 
 ```go
 type Student struct {
-	*User
-	Class string
+  *User
+  Class string
 }
 ```
 
